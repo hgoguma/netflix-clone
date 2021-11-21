@@ -1,0 +1,139 @@
+html,
+body,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 70px;
+  background: #141414;
+  color: #fff;
+  > div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+}
+.header {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  color: #fff;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .content {
+    margin-top: 40px;
+    height: 300px;
+    position: relative;
+
+    .background {
+      display: flex;
+      height: 100%;
+      .left {
+        background: #000;
+        width: 30%;
+        position: relative;
+        &:before {
+          content: "";
+          position: absolute;
+          background-image: linear-gradient(to right, #000, transparent);
+          top: 0;
+          bottom: 0;
+          width: 275px;
+          left: 100%;
+        }
+      }
+      .right {
+        background: green;
+        width: 70%;
+      }
+      .content-container {
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 30px;
+      }
+    }
+  }
+}
+
+.movie-list {
+  &__title {
+    font-size: 1.4vw;
+    color: #e5e5e5;
+    font-weight: 700;
+  }
+  &__container {
+    padding: 70px 0 0 30px;
+    margin: 0 auto;
+    &:hover {
+      .slider__item {
+        transform: translateX(-25%);
+      }
+    }
+  }
+}
+
+.slider {
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+  &__item-wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  &__item {
+    width: 200px;
+    height: 300px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: transform 300ms ease 100ms;
+    &:hover {
+      z-index: 2;
+      transform: scale(1.5) !important;
+      & ~ .slider__item {
+        transform: translateX(25%);
+      }
+    }
+  }
+  &__btn {
+    position: absolute;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    width: 100px;
+    z-index: 10;
+    span {
+      width: 25px;
+      color: #fff;
+      display: block;
+      margin: 0 auto;
+    }
+    &.prev {
+      left: 0;
+      span {
+        transform: rotateZ(-90deg);
+      }
+    }
+    &.next {
+      right: 0;
+      span {
+        transform: rotateZ(-90deg);
+      }
+    }
+  }
+}
